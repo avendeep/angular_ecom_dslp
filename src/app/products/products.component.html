@@ -8,19 +8,35 @@
       style="width: 18rem; margin: 1rem"
       *ngFor="let product of productsSliced; let i = index"
     >
-      <div class="d-flex flex-row justify-content-center">
-        <img
-          [src]="product.image"
-          class="card-img-top img-thumbnail"
-          alt="{{ product.title }}"
-          style="max-width: 150px"
-        />
-      </div>
+      <a>
+        <div
+          class="d-flex flex-row justify-content-center"
+          style="max-height: 250px; min-height: 250px"
+        >
+          <img
+            [src]="product.image"
+            class="card-img-top img-thumbnail"
+            alt="{{ product.title }}"
+          />
+        </div>
 
-      <div class="card-body">
-        <h4 class="card-title"><strong>{{ product.title }}</strong></h4>
-        <h6 class="card-subtitle mb-2 text-muted">{{ product.category }}</h6>
-        <p class="card-text">{{ product.description }}</p>
+        <div class="card-body" style="min-height: 200px">
+          <h4 class="card-title">
+            <strong>{{ product.title | shorten: 50 }}</strong>
+          </h4>
+          <h6 class="card-subtitle mb-2 text-muted">{{ product.category }}</h6>
+          <p class="card-text">{{ product.description | shorten: 60 }}</p>
+        </div>
+      </a>
+      <hr />
+      <div class="d-flex flex-row justify-content-end">
+        <button class="btn" type="button">
+            <mat-icon aria-hidden="false" aria-label="edit icon">edit</mat-icon>
+        </button>
+        <button class="btn" type="button">
+            <mat-icon aria-hidden="false" aria-label="edit icon">delete</mat-icon>
+        </button>
+        
       </div>
     </div>
   </div>

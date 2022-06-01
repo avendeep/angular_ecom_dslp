@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ShortenPipe } from './shared/shorten.pipe';
 ////////////////Material UI//////////////////////////
 import { MatSliderModule } from '@angular/material/slider';
 import {MatCardModule} from '@angular/material/card';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatIconModule} from '@angular/material/icon';
 //////////////////////Components/////////////////////
 import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,9 +18,11 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductsComponent } from './products/products.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
+    ShortenPipe,
     HomePageComponent,
     HeaderComponent,
     ProductEditComponent,
@@ -32,6 +36,7 @@ import { ProductsComponent } from './products/products.component';
     MatSliderModule,
     MatCardModule,
     MatPaginatorModule,
+    MatIconModule,
     ReactiveFormsModule,
     HttpClientModule,
   ],

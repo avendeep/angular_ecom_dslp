@@ -1,3 +1,5 @@
 .img-thumbnail {
     border: none;
+    max-width: 100%; 
+    height: auto;
 }
