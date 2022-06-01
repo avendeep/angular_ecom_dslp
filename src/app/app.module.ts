@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 ////////////////Material UI//////////////////////////
 import { MatSliderModule } from '@angular/material/slider';
 import {MatCardModule} from '@angular/material/card';
+import {MatPaginatorModule} from '@angular/material/paginator';
 //////////////////////Components/////////////////////
 import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
@@ -30,6 +31,7 @@ import { ProductsComponent } from './products/products.component';
     NoopAnimationsModule,
     MatSliderModule,
     MatCardModule,
+    MatPaginatorModule,
     ReactiveFormsModule,
     HttpClientModule,
   ],
