@@ -1,25 +1,47 @@
+<div class="d-flex flex-row justify-content-center"  *ngIf="isLoading">
+    <h3>Loading products...</h3>
+</div>
 <div class="row">
-  <div>
-    <mat-card class="example-card" *ngFor="let product of products; let i= index">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{product.title}}</mat-card-title>
-        <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
-      </mat-card-header>
-      <img
-        mat-card-image
-        [src]="product.image"
-        alt="{{product.name}}"
-      />
-      <mat-card-content>
-        <p>
-          {{product.description}}
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
-    </mat-card>
+  <div class="d-flex flex-row flex-wrap justify-content-evenly" *ngIf="!isLoading">
+        <div class="card" style="width: 18rem; margin: 1rem"  *ngFor="let product of products; let i= index">
+             <div class="d-flex flex-row justify-content-center">
+                <img 
+                [src]="product.image" 
+                class="card-img-top img-thumbnail"
+                alt="{{product.title}}"
+                style=" max-width: 150px;"
+                >
+             </div>
+            
+            <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{product.category}}</h6>
+              <p class="card-text">{{product.description}}</p>
+            </div>
+          </div>
+
+        <!-- <mat-card class="example-card" >
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{product.title}}</mat-card-title>
+              <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
+            </mat-card-header>
+            <img
+              mat-card-md-image
+              [src]="product.image"
+              alt="{{product.name}}"
+              class="img-thumbnail"
+            />
+            <mat-card-content>
+              <p>
+                {{product.description}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>LIKE</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card> -->
+    
   </div>
 </div>

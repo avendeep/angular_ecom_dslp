@@ -10,6 +10,7 @@ import { DataStorageService } from '../shared/data-storage.service';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit,OnDestroy {
+  isLoading:boolean=true;
   products: Product[];
   private subscription: Subscription;
 
@@ -24,8 +25,10 @@ export class ProductsComponent implements OnInit,OnDestroy {
     this.subscription = this.productService.productsChanged.subscribe(
       (products: Product[]) => {
         this.products = products;
+        this.isLoading= false;
       }
     );
+    
   }
 
 
