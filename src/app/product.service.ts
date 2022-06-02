@@ -47,14 +47,24 @@ export class ProductService{
     addProduct(product:any){
         return this.http.post<any>(`https://fakestoreapi.com/products`,product)
         .subscribe((response)=>{
-            console.log("Response received=>"+response)
+            console.log("Response received=>")
+            console.log(response)
         })
     }
 
     updateProduct(id:number, product:any){
         return this.http.put<any>(`https://fakestoreapi.com/products/${id}`,product)
         .subscribe((response)=>{
-            console.log("Response received=>"+response)
+            console.log("Response received=>")
+            console.log(response)
+        })
+    }
+
+    deleteProduct(id:number){
+        return this.http.delete<any>(`https://fakestoreapi.com/products/${id}`)
+        .subscribe((response)=>{
+            console.log("Response received=>")
+            console.log(response)
         })
     }
 }

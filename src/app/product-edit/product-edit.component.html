@@ -1,4 +1,9 @@
-<div class="row">
+<div class="text-center" *ngIf="isLoading">
+    <div class="spinner-border" role="status" >
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+<div class="row d-flex flex-row justify-content-around" *ngIf="!isLoading">
   <div class="col-6">
     <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
       <div class="row">
@@ -40,6 +45,7 @@
                 id="image"
                 formControlName="image"
                 aria-label="Upload"
+                #imagePath
               />
             </div>
           </div>
@@ -76,27 +82,29 @@
           </div>
         </div>
       </div>
-    </form>
-    <div class="row">
-      <div class="col-12">
-        <button
-          type="submit"
-          class="btn btn-success"
-          [disabled]="!productForm.valid"
-        >
-          Save
-        </button>
-        <button type="button" class="btn btn-danger" (click)="onCancel()">
-          Cancel
-        </button>
+      <hr>
+      <div class="row">
+        <div class="col-12">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!productForm.valid"
+          >
+            Save
+          </button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">
+            Cancel
+          </button>
+        </div>
       </div>
-    </div>
+    </form>
+    
   </div>
 
   <div class="col-6">
     <div class="row">
-      <div class="col-xs-12" *ngIf="">
-        <img [src]="imagePath.value" class="img-responsive" alt="image" />
+      <div class="col-xs-12" *ngIf="imagePath.value">
+        <img [src]="imagePath.value" class="img-thumbnail" alt="image" style="max-width: 300px;"/>
       </div>
     </div>
   </div>

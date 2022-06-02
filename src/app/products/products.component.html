@@ -38,7 +38,7 @@
             <mat-icon aria-hidden="false" aria-label="edit icon">edit</mat-icon>
         </button>
         <button class="btn" type="button">
-            <mat-icon aria-hidden="false" aria-label="edit icon">delete</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="edit icon" mat-button (click)="openDialog(product.id, product.title)">delete</mat-icon>
         </button>
         
       </div>

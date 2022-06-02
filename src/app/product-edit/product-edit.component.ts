@@ -9,7 +9,8 @@ import { ProductService } from '../product.service';
   templateUrl: './product-edit.component.html',
   styleUrls: ['./product-edit.component.css'],
 })
-export class ProductEditComponent implements OnInit, OnDestroy {
+export class ProductEditComponent implements OnInit {
+  isLoading = true;
   id: number;
   editMode: boolean = false;
   productForm: FormGroup;
@@ -39,11 +40,10 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       console.log('add new executed');
     }
     this.onCancel();
-    console.log(this.productForm.value);
   }
 
   onCancel() {
-    this.router.navigate(['../'], { relativeTo: this.route });
+    this.router.navigate(['/'], { relativeTo: this.route });
   }
 
   private initForm() {
@@ -69,7 +69,6 @@ export class ProductEditComponent implements OnInit, OnDestroy {
       });
     }
 
-
       this.productForm = new FormGroup({
         title: new FormControl(productTitle, Validators.required),
         price: new FormControl(productPrice, Validators.required),
@@ -77,8 +76,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
         description: new FormControl(productDescription, Validators.required),
         category: new FormControl(productCategory, Validators.required),
       });
-    
+      this.isLoading= false;
   }
 
-  ngOnDestroy(): void {}
 }
