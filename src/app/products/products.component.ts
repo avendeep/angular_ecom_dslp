@@ -5,6 +5,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
 import { DataStorageService } from '../shared/data-storage.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -19,7 +20,9 @@ export class ProductsComponent implements OnInit,OnDestroy {
 
   constructor(
     private dataStorageService: DataStorageService,
-    private productService: ProductService
+    private productService: ProductService,
+    private route:ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +44,11 @@ export class ProductsComponent implements OnInit,OnDestroy {
       endIndex = this.products.length;
     } 
     this.productsSliced = this.products.slice(startIndex,endIndex);
+  }
+
+  onEditProduct(id:number){
+    this.router.navigate([`${id}/edit`],{relativeTo:this.route})
+    console.log(id)
   }
 
 

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, tap } from 'rxjs';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -13,8 +13,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   id: number;
   editMode: boolean = false;
   productForm: FormGroup;
-  subscription: Subscription;
-  product: any;
+  product: object;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +25,7 @@ export class ProductEditComponent implements OnInit, OnDestroy {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.editMode = params['id'] != null;
+      console.log('editMode ' + this.editMode + ' Id: ' + this.id);
       this.initForm();
     });
   }
@@ -47,39 +47,38 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   }
 
   private initForm() {
-    let productTitle = '';
     let productPrice = '';
     let productDescription = '';
+    let productTitle = '';
     let productImage = '';
     let productCategory = '';
 
     if (this.editMode) {
-      this.product = this.productService.getProduct(this.id).subscribe();
-      this.subscription = this.productService.productChanged.subscribe(
-        (product: any) => {
-          this.product = product;
-          //this.isLoading= false;
-        }
-      );
-      productTitle = this.product.title;
-      productPrice = this.product.price;
-      productDescription = this.product.description;
-      productImage = this.product.image;
-      productCategory = this.product.category;
+      this.productService.getProduct(this.id).subscribe((response) => {
+        console.log(response);
+        this.productForm = new FormGroup({
+          title: new FormControl(response.title, Validators.required),
+          price: new FormControl(response.price, Validators.required),
+          image: new FormControl(response.image, Validators.required),
+          description: new FormControl(
+            response.description,
+            Validators.required
+          ),
+          category: new FormControl(response.category, Validators.required),
+        });
+      });
     }
 
-    this.productForm = new FormGroup({
-      title: new FormControl(productTitle, Validators.required),
-      price: new FormControl(productPrice, Validators.required),
-      description: new FormControl(productDescription, Validators.required),
-      image: new FormControl(productImage, Validators.required),
-      category: new FormControl(productCategory, Validators.required),
-    });
+
+      this.productForm = new FormGroup({
+        title: new FormControl(productTitle, Validators.required),
+        price: new FormControl(productPrice, Validators.required),
+        image: new FormControl(productImage, Validators.required),
+        description: new FormControl(productDescription, Validators.required),
+        category: new FormControl(productCategory, Validators.required),
+      });
+    
   }
 
-  ngOnDestroy(): void {
-    if(this.editMode){
-      this.subscription.unsubscribe();
-    }
-  }
+  ngOnDestroy(): void {}
 }

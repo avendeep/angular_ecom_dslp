@@ -9,7 +9,7 @@ export class ProductService{
    productChanged = new Subject<any>()
 
     private products: Product[] = [];
-    private product:object;
+    private product:any;
 
     constructor(private http: HttpClient){}
 
@@ -18,6 +18,11 @@ export class ProductService{
         this.products = products;
         this.productsChanged.next(this.products.slice())//trigering emitter
         //console.log(`from product-service ${this.products}`)
+    }
+
+    setProduct(product:any){
+        this.product = product;
+        this.productChanged.next(this.product)
     }
 
     getProducts(){
@@ -34,17 +39,22 @@ export class ProductService{
           );
     }
 
+    getProd(index:number){
+        return this.products[index];
+    }
+
+
     addProduct(product:any){
         return this.http.post<any>(`https://fakestoreapi.com/products`,product)
         .subscribe((response)=>{
-            console.log(response)
+            console.log("Response received=>"+response)
         })
     }
 
     updateProduct(id:number, product:any){
         return this.http.put<any>(`https://fakestoreapi.com/products/${id}`,product)
         .subscribe((response)=>{
-            console.log(response)
+            console.log("Response received=>"+response)
         })
     }
 }
