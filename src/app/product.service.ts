@@ -33,4 +33,18 @@ export class ProductService{
             })
           );
     }
+
+    addProduct(product:any){
+        return this.http.post<any>(`https://fakestoreapi.com/products`,product)
+        .subscribe((response)=>{
+            console.log(response)
+        })
+    }
+
+    updateProduct(id:number, product:any){
+        return this.http.put<any>(`https://fakestoreapi.com/products/${id}`,product)
+        .subscribe((response)=>{
+            console.log(response)
+        })
+    }
 }
