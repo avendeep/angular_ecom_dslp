@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit,OnDestroy {
     this.subscription = this.productService.productsChanged.subscribe(
       (products: Product[]) => {
         this.products = products;
-        this.productsSliced = this.products.slice(0,3)
+        this.productsSliced = this.products.slice(0,6)
         this.isLoading= false;
       }
     );

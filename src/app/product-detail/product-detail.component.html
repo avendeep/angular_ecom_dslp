@@ -1,1 +1,36 @@
-<p>product-detail works!</p>
+<div class="text-center">
+  <div class="spinner-border" role="status" *ngIf="isLoading">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<div class="row" *ngIf="!isLoading">
+  <div class="container">
+    <div class="d-flex">
+      <div class="col-4">
+        <div class="card">
+          <div class="card-body">
+            <img
+              [src]="product.image"
+              class="img-thumbnail"
+              alt="{{ product.title }}"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="card">
+          <div class="card-body">
+            <h2>{{ product.title }}</h2>
+            <small>in {{ product.category }}</small>
+               
+            <span><h3>Rs <strong>{{ product.price }}</strong></h3></span>
+            
+            <h4><strong>Description</strong></h4>
+            <p>{{ product.description }}</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

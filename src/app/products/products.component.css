@@ -3,3 +3,14 @@
     max-width: 100%; 
     height: auto;
 }
+a.link-tag{
+    text-decoration: none;
+}
+
+.card-title{
+    color: darkslategray;
+}
+
+.card-text{
+    color: black;
+}

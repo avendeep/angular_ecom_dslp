@@ -18,7 +18,7 @@ export class DataStorageService {
         });
       }),
       tap((products) => {
-        console.log(`From data-service=> ${products}`);
+        //console.log(`From data-service=> ${products}`);
         this.productService.setProducts(products)
       })
     );
