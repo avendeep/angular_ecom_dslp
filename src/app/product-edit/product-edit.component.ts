@@ -26,6 +26,9 @@ export class ProductEditComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.editMode = params['id'] != null;
+      if (this.editMode==false) {
+        this.isLoading = false;
+      }
       console.log('editMode ' + this.editMode + ' Id: ' + this.id);
       this.initForm();
     });
@@ -55,6 +58,9 @@ export class ProductEditComponent implements OnInit {
 
     if (this.editMode) {
       this.productService.getProduct(this.id).subscribe((response) => {
+        if (response != false) {
+          this.isLoading = false;
+        }
         console.log(response);
         this.productForm = new FormGroup({
           title: new FormControl(response.title, Validators.required),
@@ -69,14 +75,12 @@ export class ProductEditComponent implements OnInit {
       });
     }
 
-      this.productForm = new FormGroup({
-        title: new FormControl(productTitle, Validators.required),
-        price: new FormControl(productPrice, Validators.required),
-        image: new FormControl(productImage, Validators.required),
-        description: new FormControl(productDescription, Validators.required),
-        category: new FormControl(productCategory, Validators.required),
-      });
-      this.isLoading= false;
+    this.productForm = new FormGroup({
+      title: new FormControl(productTitle, Validators.required),
+      price: new FormControl(productPrice, Validators.required),
+      image: new FormControl(productImage, Validators.required),
+      description: new FormControl(productDescription, Validators.required),
+      category: new FormControl(productCategory, Validators.required),
+    });
   }
-
 }
