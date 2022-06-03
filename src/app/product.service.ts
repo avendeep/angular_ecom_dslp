@@ -51,9 +51,10 @@ export class ProductService{
             console.log(response)
         })
     }
-
+    
+//https://fakestoreapi.com/products/${id}
     updateProduct(id:number, product:any){
-        return this.http.put<any>(`https://fakestoreapi.com/products/${id}`,product)
+        return this.http.put<any>(`https://eo8c8ms7ot1ovow.m.pipedream.net/${id}`,product)
         .subscribe((response)=>{
             console.log("Response received=>")
             console.log(response)

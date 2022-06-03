@@ -19,6 +19,7 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductsComponent } from './products/products.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { DialogComponent } from './dialog/dialog.component';
     ProductEditComponent,
     ProductDetailComponent,
     ProductsComponent,
-    DialogComponent
+    DialogComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
