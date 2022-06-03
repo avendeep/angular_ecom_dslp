@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ShortenPipe } from './shared/shorten.pipe';
 ////////////////Material UI//////////////////////////
@@ -20,6 +20,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductsComponent } from './products/products.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { FooterComponent } from './footer/footer.component';
+import { AuthComponent } from './auth/auth.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { FooterComponent } from './footer/footer.component';
     ProductDetailComponent,
     ProductsComponent,
     DialogComponent,
-    FooterComponent
+    FooterComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { FooterComponent } from './footer/footer.component';
     MatPaginatorModule,
     MatIconModule,
     MatDialogModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
   ],

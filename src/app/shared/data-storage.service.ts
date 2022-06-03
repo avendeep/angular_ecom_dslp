@@ -24,12 +24,4 @@ export class DataStorageService {
     );
   }
 
-  // fetchProductById(id:number){
-  //   return this.http.get<Product[]>(`https://fakestoreapi.com/products/${id}`).pipe(
-  //     tap((product) => {
-  //       //console.log(`From data-service=> ${products}`);
-  //       this.productService.setProduct(product)
-  //     })
-  //   );
-  // }
 }
