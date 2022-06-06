@@ -83,4 +83,5 @@ export class ProductEditComponent implements OnInit {
       category: new FormControl(productCategory, Validators.required),
     });
   }
+
 }

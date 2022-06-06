@@ -1,47 +1,43 @@
-<div class=" d-flex flex-row justify-content-center">
-    <div class="spinner-border" role="status" *ngIf="isLoading">
-        <span class="visually-hidden">Loading...</span>
-    </div>
+<div class="d-flex flex-row justify-content-center">
+  <div class="spinner-border" role="status" *ngIf="isLoading">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </div>
 
 <div class="row d-flex flex-row justify-content-center" *ngIf="!isLoading">
-    
-    <div class="col-6">
-        <div class="alert alert-danger" role="alert" *ngIf="error">
-            {{error}}
-          </div>
-          <h2><strong>Login</strong></h2>
-        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-            <div class="mb-3">
-              <label for="username" class="form-label">Username</label>
-              <input
-                type="username"
-                class="form-control"
-                id="username"
-                ngModel
-                name="username"
-                required
-            username
-              />
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input 
-              type="password" 
-              class="form-control" 
-              id="password"
-              ngModel
-              name="password"
-              required
-              minlength="5"
-               />
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!authForm.valid">Login</button>
-          </form>
+  <div class="col-6">
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+      {{ error }}
     </div>
-    <div>
-      <h5>username: mor_2314</h5>
-      <h5>password: 83r5^_</h5>
-    </div>
+    <h2><strong>Login</strong></h2>
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="username"
+          class="form-control"
+          id="username"
+          formControlName="username"
+          username
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+          minlength="5"
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!authForm.valid"
+      >
+        Login
+      </button>
+    </form>
+  </div>
 </div>
-
