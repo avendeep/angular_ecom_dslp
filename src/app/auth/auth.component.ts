@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
+  styleUrls: ["./auth.component.css"],
 })
 export class AuthComponent implements OnInit {
  isLoading = false;
@@ -54,7 +55,7 @@ export class AuthComponent implements OnInit {
 
   takenNames(control: FormControl):{[s:string]:boolean}{
     if(this.takenUserNames.indexOf(control.value) !== -1){
-      return {'Username taken': true}
+      return {'usernameTaken': true}
     }
     return null
   }

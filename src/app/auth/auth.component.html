@@ -20,6 +20,25 @@
           formControlName="username"
           username
         />
+        <span
+              *ngIf="
+                !authForm.get('username').valid &&
+                authForm.get('username').touched
+              "
+              class="help-block"
+            >
+              <span 
+              *ngIf="authForm.get('username').errors['usernameTaken']"
+              >
+              Username is taken.
+              </span>
+              <span 
+              *ngIf="authForm.get('username').errors['required']"
+              >
+              This field is required
+              </span>
+         
+            </span>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
@@ -30,6 +49,20 @@
           formControlName="password"
           minlength="5"
         />
+        <span
+              *ngIf="
+                !authForm.get('password').valid &&
+                authForm.get('password').touched
+              "
+              class="help-block"
+            >
+              <span 
+              *ngIf="authForm.get('password').errors['required']"
+              >
+              This field is required
+              </span>
+         
+            </span>
       </div>
       <button
         type="submit"
