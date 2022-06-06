@@ -10,6 +10,7 @@
         <div class="alert alert-danger" role="alert" *ngIf="error">
             {{error}}
           </div>
+          <h2><strong>Login</strong></h2>
         <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
             <div class="mb-3">
               <label for="username" class="form-label">Username</label>
@@ -37,6 +38,10 @@
             </div>
             <button type="submit" class="btn btn-primary" [disabled]="!authForm.valid">Login</button>
           </form>
+    </div>
+    <div>
+      <h5>username: mor_2314</h5>
+      <h5>password: 83r5^_</h5>
     </div>
 </div>
 

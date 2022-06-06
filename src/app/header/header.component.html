@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">
+    <a class="navbar-brand" *ngIf="!isAuthenticated">
+      <img src="https://cordial.com/wp-content/uploads/2020/06/Cordial_Logo_Black_Full_Color.png" alt="" width="auto" height="24">
+    </a>
+    <a class="navbar-brand" routerLink="/" *ngIf="isAuthenticated">
       <img src="https://cordial.com/wp-content/uploads/2020/06/Cordial_Logo_Black_Full_Color.png" alt="" width="auto" height="24">
     </a>
     <!-- <a class="navbar-brand" routerLink="/">DigiMerch</a> -->
@@ -32,8 +35,18 @@
           type="button"
           class="btn btn-primary btn-sm"
           routerLink="/products/new"
+          *ngIf="isAuthenticated"
         >
           Add Product
+        </button>
+        <button
+          type="button"
+          class="btn btn-link btn-sm"
+          routerLink=""
+          *ngIf="isAuthenticated"
+          (click)="onLogout()"
+        >
+          Logout
         </button>
       </span>
     </div>
