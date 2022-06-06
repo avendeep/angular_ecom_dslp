@@ -10,7 +10,7 @@
       {{ error }}
     </div>
     <h2><strong>Login</strong></h2>
-    <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="needs-validation">
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
         <input
@@ -25,7 +25,6 @@
                 !authForm.get('username').valid &&
                 authForm.get('username').touched
               "
-              class="help-block"
             >
               <span 
               *ngIf="authForm.get('username').errors['usernameTaken']"
@@ -54,7 +53,7 @@
                 !authForm.get('password').valid &&
                 authForm.get('password').touched
               "
-              class="help-block"
+              class=""
             >
               <span 
               *ngIf="authForm.get('password').errors['required']"
